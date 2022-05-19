@@ -1,0 +1,13 @@
+<%= form_with model: @booking do | f | %>
+    <%= hidden_field :booking, :passengers_number, :value => params[:booking][:passengers_number] %>
+    <%= hidden_field :booking, :flight_id, :value => params[:booking][:flight_id] %>
+    <%= f.fields_for :passengers do | p | %>
+        <%= p.label :name %>
+        <%= p.text_field :name %>
+        <%= p.label :email %>
+        <%= p.email_field :email %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+
+<%= params %>

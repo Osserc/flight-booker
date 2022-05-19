@@ -11,11 +11,12 @@
 <div class="d">
     <% if params.has_key?(:departure_airport_id) %>
         <div>
-            <%= form_with(url: "/flights", method: "get") do %>
+            <%= form_with(url: new_booking_path, method: "get") do %>
+                <%= hidden_field :booking, :passengers_number, :value => params[:passengers_number] %>
                 <%= collection_radio_buttons(:booking, :flight_id, @flights, :id, :id) do | b | %>
                     <%= b.label(:"data-value" => b.value) { b.radio_button + "#{b.object.departure_airport.code} #{b.object.arrival_airport.code}" } %>
                     <% end %>
-                </br><%= submit_tag("Select flight") %>
+                <%= submit_tag("Select flight") %>
             <% end %>
         </div>
     <% end %>
