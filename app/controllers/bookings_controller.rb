@@ -10,8 +10,7 @@ class BookingsController < ApplicationController
 
     def create
         @booking = @flight.bookings.create(booking_params)
-        @booking.passengers.create(booking_params[:passengers_attributes])
-        redirect_to booking_path
+        redirect_to booking_path(@booking.id)
     end
 
     def show
