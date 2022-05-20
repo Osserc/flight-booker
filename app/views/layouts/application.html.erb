@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <div class="header">
+      <div class="sitename">Osserc's flight booking service</div>
+      <div class="home">
+        <button><%= link_to "Home", root_path %></button>
+      </div>
+    </div>
+
     <%= yield %>
+
+    <div class="footer">
+      Sponsored by: <%= link_to "Osserc Inc.", "https://github.com/Osserc", :target => "_blank" %>
+    </div>
   </body>
 </html>

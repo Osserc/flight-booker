@@ -1,0 +1,102 @@
+.flights-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 15%;
+    gap: 100px;
+    margin-top: 10%;
+}
+
+.flights-index .pick-flights {
+    display: flex;
+    justify-content: flex-end;
+    background-color: dodgerblue;
+    color: papayawhip;
+    padding: 25px 10px;
+}
+
+.flights-index .pick-flights form {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 5px;
+}
+
+.flights-index .pick-flights form div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.flights-index .pick-flights form .submit {
+    display: flex;
+    justify-content: center;
+}
+
+.flights-index .pick-flights form div select {
+    width: 50%;
+    border: 2px solid blue;
+    background-color: lightskyblue;
+    text-align: center;
+}
+
+.flights-index .pick-flights form input[type=submit] {
+    width: 40%;
+    border: 2px solid papayawhip;
+    background-color: lightskyblue;
+    color: papayawhip;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15px;
+}
+
+.flights-index .flight-list {
+    background-color: cornflowerblue ;
+    color: papayawhip;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flight-list .flights-container {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.flight-list .date-reminder {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.flight-list form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    gap: 5px;
+}
+
+.flight-list .single-flight {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.flight-list form .submit {
+    display: flex;
+    justify-content: center;
+}
+
+.flight-list form input[type=submit] {
+    width: 40%;
+    border: 2px solid papayawhip;
+    background-color: lightskyblue;
+    color: papayawhip;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15px;
+}

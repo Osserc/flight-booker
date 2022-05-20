@@ -1,27 +1,38 @@
-<%= form_with(url: "/flights", method: "get") do %>
-    <%= select_tag(:departure_airport_id, options_for_select(@airports)) %>
-    <%= select_tag(:arrival_airport_id, options_for_select(@airports)) %>
-    <%= select_tag(:passengers_number, options_for_select(1..4)) %>
-    <%= select_tag(:start_datetime, options_for_select(@dates)) %>
-    <%= submit_tag("Search")%>
-<% end %>
+<div class="flights-index">
+    <div class="pick-flights">
+        <%= form_with(url: "/flights", method: "get") do %>
+            <div><%= label_tag(:departure_airport_id, "Departure airport") %>
+            <%= select_tag(:departure_airport_id, options_for_select(@airports)) %></div>
+            <div><%= label_tag(:arrival_airport_id, "Arrival airport") %>
+            <%= select_tag(:arrival_airport_id, options_for_select(@airports)) %></div>
+            <div><%= label_tag(:passengers_number, "Number of passengers") %>
+            <%= select_tag(:passengers_number, options_for_select(1..4)) %></div>
+            <div><%= label_tag(:start_datetime, "Time of departure") %>
+            <%= select_tag(:start_datetime, options_for_select(@dates)) %></div>
+            <div class="submit"><%= submit_tag("Search flight")%></div>
+        <% end %>
+    </div>
+    
 
-<div class="o"><%= params %></div>
-
-<div class="d">
-    <% if params.has_key?(:departure_airport_id) %>
-        <div>
-            <%= form_with(url: new_booking_path, method: "get") do %>
-                <%= hidden_field :booking, :passengers_number, :value => params[:passengers_number] %>
-                <%= collection_radio_buttons(:booking, :flight_id, @flights, :id, :id) do | b | %>
-                    <%= b.label(:"data-value" => b.value) { b.radio_button + "#{b.object.departure_airport.code} #{b.object.arrival_airport.code}" } %>
+    <div>
+        <% if !@flights.empty? %>
+            <div class="flight-list">
+                <div class="flights-container">
+                    <div class="date-reminder"><%= "Flights on #{params[:start_datetime].to_datetime.strftime("%m/%d/%Y")}" %></div>
+                    <%= form_with(url: new_booking_path, method: "get") do %>
+                        <%= hidden_field :booking, :passengers_number, :value => params[:passengers_number] %>
+                        <%= collection_radio_buttons(:booking, :flight_id, @flights, :id, :id) do | b | %>
+                            <div class="single-flight">
+                                <%= b.label(:"data-value" => b.value) { "#{b.object.departure_airport.code} to #{b.object.arrival_airport.code}" } %>
+                                
+                                <%= b.label(:"data-value" => b.value) { "Duration: #{b.object.flight_duration} minutes" } %>
+                                <%= b.radio_button %>
+                            </div>
+                            <% end %>
+                        <div class="submit"><%= submit_tag("Select flight") %></div>
                     <% end %>
-                <%= submit_tag("Select flight") %>
-            <% end %>
-        </div>
-    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
-
-
-
-<div class="c"><%= @flights %></div>
