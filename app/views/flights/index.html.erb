@@ -1,3 +1,5 @@
+<div class="flights-index-header">Flight search</div>
+
 <div class="flights-index">
     <div class="pick-flights">
         <%= form_with(url: "/flights", method: "get") do %>
@@ -7,23 +9,31 @@
             <%= select_tag(:arrival_airport_id, options_for_select(@airports)) %></div>
             <div><%= label_tag(:passengers_number, "Number of passengers") %>
             <%= select_tag(:passengers_number, options_for_select(1..4)) %></div>
-            <div><%= label_tag(:start_datetime, "Time of departure") %>
-            <%= select_tag(:start_datetime, options_for_select(@dates)) %></div>
+            <div class="date-picking">
+                <div class="date-label">Day of departure</div>
+                <div class="date-select">
+                    <%= select_day(Date.today, field_name: "day", prefix: "date") %>
+                    <%= select_month(Date.today, field_name: "month", prefix: "date") %>
+                </div>
+            </div>
             <div class="submit"><%= submit_tag("Search flight")%></div>
         <% end %>
     </div>
-    
 
     <div>
         <% if !@flights.empty? %>
+            <div class="flight-list-header">Search results</div>
             <div class="flight-list">
                 <div class="flights-container">
-                    <div class="date-reminder"><%= "Flights on #{params[:start_datetime].to_datetime.strftime("%m/%d/%Y")}" %></div>
+                    <div>
+                        <div class="reminder-date"><%= "Flights on #{@flights.first.start_datetime.to_datetime.strftime("%m/%d/%Y")}" %></div>
+                        <div class="reminder-tract"><%= "#{@flights.first.departure_airport.name} to #{@flights.first.arrival_airport.name}" %></div>
+                    </div>
                     <%= form_with(url: new_booking_path, method: "get") do %>
                         <%= hidden_field :booking, :passengers_number, :value => params[:passengers_number] %>
                         <%= collection_radio_buttons(:booking, :flight_id, @flights, :id, :id) do | b | %>
                             <div class="single-flight">
-                                <%= b.label(:"data-value" => b.value) { "#{b.object.departure_airport.code} to #{b.object.arrival_airport.code}" } %>
+                                <%= b.label(:"data-value" => b.value) { "Schedule: #{b.object.start_datetime.strftime("%H:%m")}" } %>
                                 
                                 <%= b.label(:"data-value" => b.value) { "Duration: #{b.object.flight_duration} minutes" } %>
                                 <%= b.radio_button %>

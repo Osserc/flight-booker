@@ -1,1 +1,26 @@
-<%= @booking.passengers.first.name %>
+<div class="bookings-show">
+
+    <div class="booking-content">
+        <div class="thanks">Thank you for choosing our service</div>
+        <div class="booking-codes">
+            <div>Your flight code is: <strong><%= @booking.flight.id %></strong></div>
+            <div>Your registration code is: <strong><%= @booking.id %></strong></div>
+        </div>
+        <div class="booking-information">
+            <div class="date"><strong>Date</strong></div>
+            <div class="start"><strong>Airport</strong></div>
+            <div class="destination"><strong>Destination</strong></div>
+            <div class="date"><%= @booking.flight.start_datetime.strftime("%m/%d/%Y %H:%m") %></div>
+            <div class="start"><%= @booking.flight.departure_airport.name %></div>
+            <div class="destination"><%= @booking.flight.arrival_airport.name %></div>
+        </div>
+        <div class="booking-passengers">
+            <div>Number of passengers: <strong><%= @booking.passengers.count %></strong></div>
+            <div class="passengers">
+                <% @booking.passengers.each do | passenger | %>
+                    <div><strong><%= passenger.name %></strong></div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

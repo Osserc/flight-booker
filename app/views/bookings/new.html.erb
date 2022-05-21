@@ -1,13 +1,22 @@
-<%= form_with model: @booking do | f | %>
-    <%= hidden_field :booking, :passengers_number, :value => params[:booking][:passengers_number] %>
-    <%= hidden_field :booking, :flight_id, :value => params[:booking][:flight_id] %>
-    <%= f.fields_for :passengers do | p | %>
-        <%= p.label :name %>
-        <%= p.text_field :name %>
-        <%= p.label :email %>
-        <%= p.email_field :email %>
-    <% end %>
-    <%= f.submit %>
-<% end %>
+<div class="bookings-new-header">Passengers registration</div>
 
-<%= params %>
+<div class="bookings-new">
+    <%= form_with model: @booking do | f | %>
+        <%= hidden_field :booking, :passengers_number, :value => params[:booking][:passengers_number] %>
+        <%= hidden_field :booking, :flight_id, :value => params[:booking][:flight_id] %>
+        <%= f.fields_for :passengers do | p | %>
+            <div class="single-booking">
+                <div class="passenger"><%= "#{(p.options[:child_index] + 1).ordinalize} passenger" %></div>
+                <div class="single-field">
+                    <div><%= p.label :name %></div>
+                    <div><%= p.text_field :name %></div>
+                </div>
+                <div class="single-field">
+                    <div><%= p.label :email %></div>
+                    <div><%= p.email_field :email %></div>
+                </div>
+            </div>
+        <% end %>
+        <div class="submit"><%= f.submit %></div>
+    <% end %>
+</div>

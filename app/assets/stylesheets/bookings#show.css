@@ -1,0 +1,57 @@
+.bookings-show {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 50%;
+    padding: 50px;
+    border: 5px solid dodgerblue;
+    background-color: cornflowerblue;
+    color: papayawhip;
+    border-radius: 75px;
+    margin: auto;
+    font-size: 20px;
+}
+
+.bookings-show .thanks {
+    font-size: 34px;
+    text-align: center;
+}
+
+.bookings-show .booking-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bookings-show .booking-codes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookings-show .booking-information {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto auto;
+}
+
+.bookings-show .booking-passengers {
+    text-align: center;
+}
+
+.bookings-show .date {
+    justify-self: start;
+}
+
+.bookings-show .start {
+    justify-self: center;
+}
+
+.bookings-show .destination {
+    justify-self: end;
+}
+
+.bookings-show .passengers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    justify-content: space-between;
+}

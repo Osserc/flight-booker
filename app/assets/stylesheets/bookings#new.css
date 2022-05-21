@@ -1,0 +1,71 @@
+.bookings-new-header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: dodgerblue;
+    color: papayawhip;
+    font-weight: bold;
+    font-size: 36px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-right: 50px;
+    margin-top: 5%;
+}
+
+.bookings-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 75px;
+    background-color: dodgerblue;
+    color: papayawhip;
+    padding: 25px 10px;
+}
+
+.bookings-new form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 5px 35px;
+}
+
+.bookings-new .single-booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15%;
+    gap: 10px;
+}
+
+.bookings-new form .single-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookings-new form .submit {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bookings-new form .passenger {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.bookings-new form label {
+    font-weight: bold;
+}
+
+.bookings-new form input[type=submit] {
+    width: 12%;
+    border: 2px solid papayawhip;
+    background-color: lightskyblue;
+    color: papayawhip;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-top: 15px;
+}

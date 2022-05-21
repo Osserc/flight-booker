@@ -21,9 +21,9 @@ Flight.destroy_all
 #     end
 # end
 
-a1 = Airport.create(code: "AAA")
-a2 = Airport.create(code: "BBB")
-a3 = Airport.create(code: "CCC")
+a1 = Airport.create(code: "AAA", name: "Milano")
+a2 = Airport.create(code: "BBB", name: "Cagliari")
+a3 = Airport.create(code: "CCC", name: "Bologna")
 
 a1.departing_flights.create(start_datetime: (DateTime.now.beginning_of_day + rand(21).days + (rand(48) * 30).minutes), flight_duration:rand(60..240), arrival_airport: a2)
 a2.departing_flights.create(start_datetime: (DateTime.now.beginning_of_day + rand(21).days + (rand(48) * 30).minutes), flight_duration:rand(60..240), arrival_airport: a1)
