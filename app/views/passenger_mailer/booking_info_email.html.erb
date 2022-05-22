@@ -1,0 +1,7 @@
+<div>Dear <%= @passenger.name %>, we are glad you chose to use our service.</div>
+
+<div>You have succesfully booked your flight. It will depart from <%= @booking.flight.departure_airport.name %> for <%= @booking.flight.arrival_airport.name %>.</div>
+
+<div>It is scheduled to leave on <%= @booking.flight.start_datetime.strftime("%m/%d/%Y, at %H:%m") %></div>
+
+<div>You can review the details <%= link_to "here", booking_url(@booking.id) %>.</div>

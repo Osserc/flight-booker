@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
             render :new, status: :unprocessable_entity
         else
             flash[:notice] = "Booking succesful."
+            send_confirmation_emails
             redirect_to booking_path(@booking.id)
         end
     end
@@ -29,6 +30,13 @@ class BookingsController < ApplicationController
     private
     def booking_params
         params.require(:booking).permit(:id, :flight_id, :passengers_number, passengers_attributes: [ :name, :email ])
+    end
+
+    def send_confirmation_emails
+        @passengers = @booking.passengers
+        @passengers.each do | single |
+            PassengerMailer.booking_info_email(@booking, single).deliver_later
+        end
     end
 
 end
