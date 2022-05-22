@@ -20,3 +20,11 @@
         <div class="submit"><%= f.submit %></div>
     <% end %>
 </div>
+
+<% if @booking.errors.any? %>
+    <div class="bookings-errors">
+            <% @booking.errors.full_messages.each do |error| %>
+                <div><%= error %></div>
+            <% end %>
+    </div>
+<% end %>

@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+
     <div class="header">
       <div class="sitename">Osserc's flight booking service</div>
       <div class="home">
